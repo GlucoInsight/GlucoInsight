@@ -34,8 +34,8 @@ public class Information {
     @Column(name = "sao2")
     Integer sao2;
 
-    @Column(name = "length")
-    Float length;
+    @Column(name = "height")
+    Float height;
 
     @Column(name = "weight")
     Float weight;
