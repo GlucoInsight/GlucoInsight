@@ -18,9 +18,14 @@ import lombok.*;
 public class User {
     @Id
     @Column(name = "user_id")  // 修改为数据库中对应的列名
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
 
-    @Column(name = "user_name", nullable = false)  // 修改为数据库中对应的列名
+    @Column(name = "user_openid")
+    @Schema(nullable = false)
+    String openId;
+
+    @Column(name = "user_name")  // 修改为数据库中对应的列名
     @Schema(defaultValue = "Not set")
     String name;
 
