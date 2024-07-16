@@ -29,7 +29,7 @@ public class Information {
     LocalDateTime timestamp;
 
     @Column(name = "heart_rate")
-    Integer heart_rate;
+    Integer heartRate;
 
     @Column(name = "sao2")
     Integer sao2;
@@ -44,7 +44,7 @@ public class Information {
     Float pressure;
 
     @Column(name = "gluco_type")
-    Integer gluco_type;
+    Integer glucoType;
 
 
 }
