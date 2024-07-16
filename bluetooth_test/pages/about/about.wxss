@@ -1,0 +1,54 @@
+/* pages/about/about.wxss */
+
+.page {
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  margin-top: 100rpx;
+  height: 144rpx;
+  width: 144rpx;
+}
+
+.title {
+  margin-top: 50rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+}
+
+.version {
+  margin-top: 20rpx;
+  font-size: 35rpx;
+}
+
+.repository {
+  margin-top: 130rpx;
+  width: 90%;
+
+}
+
+.text1 {
+  width: 100%;
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: 600;
+  line-height: 80rpx;
+}
+
+.text2 {
+  font-size: 33rpx;
+  line-height: 50rpx;
+}
+
+.text3 {
+  font-size: 33rpx;
+  color: blue;
+  text-align: center;
+}
+
+.ad-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
