@@ -17,7 +17,6 @@ import lombok.*;
 @Schema(description = "User")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")  // 修改为数据库中对应的列名
     Integer id;
 
