@@ -19,16 +19,16 @@ public class Gluco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "gluco_id")
-    private Integer id;
+    Integer id;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    User user;
 
     @Column(name = "timestamp", nullable = false)
-    private LocalDateTime timestamp;
+    LocalDateTime timestamp;
 
     @Column(name = "gluco_value")
-    private Integer glucoValue;
+    Integer glucoValue;
 
 }
