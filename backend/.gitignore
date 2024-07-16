@@ -1,0 +1,44 @@
+HELP.md
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+frontend/node_modules/
+frontend/.idea/
+frontend/.gradle/
+algorithm/dataset
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+test.mv.db
+test.trace.db
+algorithm/dataset/TMDB5000/tmdb_5000_credits.csv
+algorithm/dataset/TMDB5000/tmdb_5000_movies.csv
+
+src/main/resources/application-release.yaml
