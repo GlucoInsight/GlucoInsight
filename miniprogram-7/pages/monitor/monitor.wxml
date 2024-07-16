@@ -1,0 +1,20 @@
+<!-- pages/monitor/monitor.wxml -->
+<view class="container">
+  <view class="circle">
+    <view class="sector sector1" data-sector="1" bindtap="onTapSector" data-url="/pages/detail1/detail1" animation="{{animation1}}">
+      <text class="sector-text">扇形 1</text>
+    </view>
+    <view class="sector sector2" data-sector="2" bindtap="onTapSector" data-url="/pages/detail2/detail2" animation="{{animation2}}">
+      <text class="sector-text">扇形 2</text>
+    </view>
+    <view class="sector sector3" data-sector="3" bindtap="onTapSector" data-url="/pages/detail3/detail3" animation="{{animation3}}">
+      <text class="sector-text">扇形 3</text>
+    </view>
+    <view class="sector sector4" data-sector="4" bindtap="onTapSector" data-url="/pages/detail4/detail4" animation="{{animation4}}">
+      <text class="sector-text">扇形 4</text>
+    </view>
+    <view class="sector sector5" data-sector="5" bindtap="onTapSector" data-url="/pages/detail5/detail5" animation="{{animation5}}">
+      <text class="sector-text">扇形 5</text>
+    </view>
+  </view>
+</view>

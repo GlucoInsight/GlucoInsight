@@ -1,0 +1,60 @@
+/* pages/monitor/monitor.wxss */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: #ffffff;
+}
+
+.circle {
+  position: relative;
+  width: 600rpx;
+  height: 600rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 8rpx 16rpx rgba(0, 0, 0, 0.2);
+}
+
+.sector {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  clip-path: polygon(50% 50%, 0 100%, 100% 100%);
+  transform-origin: center;
+  transition: transform 0.5s ease; /* 修改动画时间 */
+}
+
+.sector1 {
+  background-image: linear-gradient(45deg, #ff9a9e, #fad0c4);
+  transform: rotate(0deg) skew(40deg);
+}
+.sector2 {
+  background-image: linear-gradient(45deg, #a18cd1, #fbc2eb);
+  transform: rotate(72deg) skew(40deg);
+}
+.sector3 {
+  background-image: linear-gradient(45deg, #fad0c4, #ffd1ff);
+  transform: rotate(144deg) skew(40deg);
+}
+.sector4 {
+  background-image: linear-gradient(45deg, #ffecd2, #fcb69f);
+  transform: rotate(216deg) skew(40deg);
+}
+.sector5 {
+  background-image: linear-gradient(45deg, #a1c4fd, #c2e9fb);
+  transform: rotate(288deg) skew(40deg);
+}
+
+.sector-text {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  bottom: 20%;
+  transform: translateX(-50%) rotate(-0deg);
+  color: white;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  text-shadow: 2rpx 2rpx 8rpx rgba(0, 0, 0, 0.5);
+}
