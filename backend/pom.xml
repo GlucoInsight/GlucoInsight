@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>glucoinsight</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>demo</name>
     <description>demo</description>
     <properties>
