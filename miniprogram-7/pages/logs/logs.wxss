@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.pieCanvas {
+  width: 300px;
+  height: 300px;
+}
+
+.sector {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+}

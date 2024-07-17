@@ -1,0 +1,4 @@
+<view class="container">
+  <canvas canvas-id="pieCanvas" class="pieCanvas"></canvas>
+  <view class="sector" wx:for="{{sectors}}" data-sector-index="{{index}}" bindtap="handleSectorClick"></view>
+</view>
