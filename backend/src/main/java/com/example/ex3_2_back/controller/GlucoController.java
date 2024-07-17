@@ -121,18 +121,43 @@ public class GlucoController {
             LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
             // 获取24小时内的数据
             LocalDateTime yesterday = now.minusDays(1);
-            List<Gluco> yestdayGluco = glucoRepository.findByUserAndTimestampBetween(user, yesterday, now);
-            List<Gluco> predictGluco = predict(yestdayGluco);
+            List<PredictRequestAndReturn> yestdayGluco = glucoRepository.findGlucoValueByUserAndTimestampBetween(user, yesterday, now);
+            List<PredictRequestAndReturn> predictGluco = predict(yestdayGluco);
             return Result.success(predictGluco);
         } catch (Exception e) {
             return Result.error(e.getMessage()).addErrors(e);
         }
     }
+    public class PredictRequestAndReturn {
+        LocalDateTime timestamp;
+        Float predictGluco;
 
-    public List<Gluco> predict(List<Gluco> glucoList) throws IOException {
+        public PredictRequestAndReturn(LocalDateTime timestamp, Float predictGluco) {
+            this.timestamp = timestamp;
+            this.predictGluco = predictGluco;
+        }
+
+        public LocalDateTime getTimestamp() {
+            return timestamp;
+        }
+
+        public void setTimestamp(LocalDateTime timestamp) {
+            this.timestamp = timestamp;
+        }
+
+        public Float getPredictGluco() {
+            return predictGluco;
+        }
+
+        public void setPredictGluco(Float predictGluco) {
+            this.predictGluco = predictGluco;
+        }
+    }
+
+    public List<PredictRequestAndReturn> predict(List<PredictRequestAndReturn> glucoList) throws IOException {
         ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_gluco");
         JSONObject jsonObject = new JSONObject(response.getBody());
-        List<Gluco> predictGluco = jsonObject.getJSONArray("predict_gluco").toList(Gluco.class);
+        List<PredictRequestAndReturn> predictGluco = jsonObject.getJSONArray("predict_gluco").toList(PredictRequestAndReturn.class);
         return predictGluco;
     }
 
