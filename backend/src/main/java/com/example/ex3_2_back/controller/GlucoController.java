@@ -1,5 +1,7 @@
 package com.example.ex3_2_back.controller;
 
+import cn.hutool.json.JSONObject;
+import com.example.ex3_2_back.domain.PredictRequestAndReturn;
 import com.example.ex3_2_back.domain.Result;
 import com.example.ex3_2_back.entity.Diet;
 import com.example.ex3_2_back.entity.Gluco;
@@ -9,10 +11,14 @@ import com.example.ex3_2_back.repository.DietRepository;
 import com.example.ex3_2_back.repository.GlucoRepository;
 import com.example.ex3_2_back.repository.InformationRepository;
 import com.example.ex3_2_back.repository.UserRepository;
+import com.example.ex3_2_back.service.DietService;
+import com.example.ex3_2_back.service.FlaskService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -26,6 +32,12 @@ public class GlucoController {
     private GlucoRepository glucoRepository;
     private InformationRepository informationRepository;
     private DietRepository dietRepository;
+
+    @Autowired
+    private FlaskService flaskService;
+
+    @Autowired
+    private DietService dietService;
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -115,18 +127,20 @@ public class GlucoController {
             LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
             // 获取24小时内的数据
             LocalDateTime yesterday = now.minusDays(1);
-            List<Gluco> yestdayGluco = glucoRepository.findByUserAndTimestampBetween(user, yesterday, now);
-            // TODO: Predict
-            List<Gluco> predictGluco = predict(yestdayGluco);
+            List<PredictRequestAndReturn> yestdayGluco = glucoRepository.findGlucoValueByUserAndTimestampBetween(user, yesterday, now);
+            List<PredictRequestAndReturn> predictGluco = predict(yestdayGluco);
             return Result.success(predictGluco);
         } catch (Exception e) {
             return Result.error(e.getMessage()).addErrors(e);
         }
     }
 
-    public List<Gluco> predict(List<Gluco> glucoList) {
-        // TODO: Predict
-        return glucoList;
+
+    public List<PredictRequestAndReturn> predict(List<PredictRequestAndReturn> glucoList) throws IOException {
+        ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_gluco");
+        JSONObject jsonObject = new JSONObject(response.getBody());
+        List<PredictRequestAndReturn> predictGluco = jsonObject.getJSONArray("predict_gluco").toList(PredictRequestAndReturn.class);
+        return predictGluco;
     }
 
     @GetMapping("/gluco_type")
@@ -137,11 +151,12 @@ public class GlucoController {
             // 获取24小时内的数据
             LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
             LocalDateTime yesterday = now.minusDays(1);
-            List<Gluco> glucoList = glucoRepository.findByUserAndTimestampBetween(user, yesterday, now);
-            // predict gluco type
-            Integer glucoType = predictGlucoType(glucoList);
-            // 添加Information
+            List<PredictRequestAndReturn> glucoList = glucoRepository.findGlucoValueByUser(user);
             Information lastInformation = informationRepository.findByUser(user).get(0);
+            // predict gluco type
+            Integer glucoType = predictGlucoType(user.getAge(), lastInformation.getWeight(), lastInformation.getHeight(), glucoList);
+            // 添加Information
+
             Information information = Information.builder()
                     .user(user)
                     .timestamp(now)
@@ -160,9 +175,18 @@ public class GlucoController {
         }
     }
 
-    private Integer predictGlucoType(List<Gluco> glucoList) {
-        // TODO: Predict GlucoType
-        return 0;
+    private Integer predictGlucoType(Integer age, Float weight, Float height, List<PredictRequestAndReturn> glucoList) throws IOException {
+        Float bmi = weight / (height * height);
+        // 将age, bmi和glucoList合并在一起为一个JSON
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("age", age);
+        requestBody.put("bmi", bmi);
+        requestBody.put("glucoList", glucoList);
+        ResponseEntity<String> response = flaskService.callFlaskEndpoint(requestBody, "/predict_gluco_type");
+
+        JSONObject jsonObject = new JSONObject(response.getBody());
+        Integer glucoType = jsonObject.getInt("data");
+        return glucoType;
     }
 
 
@@ -192,24 +216,23 @@ public class GlucoController {
     public Result addDiet(@RequestParam("user_id") Integer userId) {
         User user = userRepository.findById(userId).orElse(null);
         try {
-            // 获取上次饮食信息
-            LocalDateTime lastEndTime = dietRepository.findByUser(user).get(0).getEndTime();
+            LocalDateTime lastEndTime = null;
+            // 如果存在，获取上次饮食信息，没有则设为时间戳最开始
+            if (dietRepository.findByUser(user).isEmpty()) {
+                lastEndTime = LocalDateTime.of(1970, 1, 1, 0, 0, 0);
+            }
+            lastEndTime = dietRepository.findByUser(user).get(0).getEndTime();
             // 获取当前时间
             LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
 
             List<Gluco> glucoList = glucoRepository.findByUserAndTimestampBetween(user, lastEndTime, now);
             // predict diet
-            List<Diet> dietList = predictDiet(glucoList);
+            List<Diet> dietList = dietService.predictDiet(glucoList, user.getId());
             // 添加Diet
             dietRepository.saveAll(dietList);
             return Result.success(dietList);
         } catch (Exception e) {
             return Result.error(e.getMessage()).addErrors(e);
         }
-    }
-
-    private List<Diet> predictDiet(List<Gluco> glucoList) {
-        // TODO: Predict Diet
-        return null;
     }
 }

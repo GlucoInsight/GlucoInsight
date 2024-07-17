@@ -9,8 +9,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>demo</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>glucoinsight</artifactId>
+    <version>0.0.2</version>
     <name>demo</name>
     <description>demo</description>
     <properties>
@@ -132,6 +132,12 @@
             <version>5.8.0.M4</version>
 
         </dependency>
+        <dependency>
+        <groupId>com.fasterxml.jackson.datatype</groupId>
+        <artifactId>jackson-datatype-jsr310</artifactId>
+        <version>2.13.0</version> <!-- 使用最新版本 -->
+        </dependency>
+
     </dependencies>
 
     <build>

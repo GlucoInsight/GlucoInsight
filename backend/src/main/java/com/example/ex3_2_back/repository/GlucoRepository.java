@@ -1,5 +1,7 @@
 package com.example.ex3_2_back.repository;
 
+import com.example.ex3_2_back.controller.GlucoController;
+import com.example.ex3_2_back.domain.PredictRequestAndReturn;
 import com.example.ex3_2_back.entity.Gluco;
 import com.example.ex3_2_back.entity.User;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,4 +27,15 @@ public interface GlucoRepository extends JpaRepository<Gluco, String> {
     @RestResource(path = "findByUserAndTimestampBetween")
     @Query("SELECT g FROM Gluco g WHERE g.user = :user AND g.timestamp BETWEEN :start AND :end ORDER BY g.timestamp DESC")
     List<Gluco> findByUserAndTimestampBetween(User user, LocalDateTime start, LocalDateTime end);
+
+
+    @Operation(summary = "通过用户和时间范围查找血糖信息按时间戳从后到前排序")
+    @RestResource(path = "findGlucoValueByUserAndTimestampBetween")
+    @Query("SELECT new com.example.ex3_2_back.domain.PredictRequestAndReturn(g.timestamp, g.glucoValue) FROM Gluco g WHERE g.user = :user AND g.timestamp BETWEEN :yesterday AND :now ORDER BY g.timestamp DESC")
+    List<PredictRequestAndReturn> findGlucoValueByUserAndTimestampBetween(User user, LocalDateTime yesterday, LocalDateTime now);
+
+    @Operation(summary = "通过用户查找血糖信息按时间戳从后到前排序")
+    @RestResource(path = "findGlucoValueByUser")
+    @Query("SELECT new com.example.ex3_2_back.domain.PredictRequestAndReturn(g.timestamp, g.glucoValue) FROM Gluco g WHERE g.user = :user ORDER BY g.timestamp DESC")
+    List<PredictRequestAndReturn> findGlucoValueByUser(User user);
 }

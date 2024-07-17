@@ -112,7 +112,7 @@ def load_model():
     scaler.mean_ = np.array(scaler_params['mean'])
     scaler.scale_ = np.array(scaler_params['scale'])
 
-    input_layer = Input(shape=(36, 1))
+    input_layer = Input(shape=(10, 1))
     lstm_layer = LSTM(128, return_sequences=True)(input_layer)
     lstm_layer = LSTM(64)(lstm_layer)
 
@@ -129,6 +129,8 @@ def load_model():
 # 预测函数
 def predict_nutrients(model, scaler, glucose_values):
     glucose_values = clean_glucose_values(glucose_values)
+    if len(glucose_values) != 36:
+        raise ValueError(f"Expected glucose_values length of 36, got {len(glucose_values)}")
     features = extract_features(glucose_values)
     features = scaler.transform([features])
     features_lstm = features.reshape((features.shape[0], features.shape[1], 1))
@@ -137,12 +139,12 @@ def predict_nutrients(model, scaler, glucose_values):
 
 # 示例应用
 if __name__ == "__main__":
-    import argparse
-    parser = argparse.ArgumentParser(description='Predict nutrients from CGM readings.')
-    parser.add_argument('data_path', type=str, help='Path to the input data file.')
-    args = parser.parse_args()
+    # import argparse
+    # parser = argparse.ArgumentParser(description='Predict nutrients from CGM readings.')
+    # parser.add_argument('data_path', type=str, help='Path to the input data file.')
+    # args = parser.parse_args()
 
-    model, scaler = train_model(args.data_path)
+    model, scaler = load_model()
 
     start_time = '2021-01-01 08:00:00'
     end_time = '2021-01-01 10:00:00'
