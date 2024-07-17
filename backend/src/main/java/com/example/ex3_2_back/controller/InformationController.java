@@ -78,5 +78,35 @@ public class InformationController {
             return Result.error(e.getMessage()).addErrors(e);
         }
     }
+
+    @PostMapping("/addGlucoType")
+    @Operation(summary = "添加GlucoType", description = "添加GlucoType")
+    public Result addGlucoType(@RequestBody InformationRequest request) {
+        try {
+            Optional<User> userOptional = userRepository.findById(request.getUserId());
+            if (!userOptional.isPresent()) {
+                return Result.error("User not found").addErrors(new Exception("User not found"));
+            }
+            User user = userOptional.get();
+            // 获取该用户上一条信息的除了GlucoType的其他数据
+            Information lastInformation = informationRepository.findByUser(user).get(0);
+
+            Information information = Information.builder()
+                    .user(user)
+                    .timestamp(request.getTimestamp())
+                    .heartRate(lastInformation.getHeartRate())
+                    .sao2(lastInformation.getSao2())
+                    .height(lastInformation.getHeight())
+                    .weight(lastInformation.getWeight())
+                    .pressure(lastInformation.getPressure())
+                    .glucoType(request.getGlucoType())
+                    .build();
+
+            informationRepository.save(information);
+            return Result.success();
+        } catch (Exception e) {
+            return Result.error(e.getMessage()).addErrors(e);
+        }
+    }
 }
 

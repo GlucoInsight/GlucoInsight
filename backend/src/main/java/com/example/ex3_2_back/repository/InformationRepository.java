@@ -19,7 +19,7 @@ import java.util.List;
 public interface InformationRepository extends JpaRepository<Information, String> {
 
     @Operation(summary = "通过用户ID查找信息按时间戳从后到前排序")
-    @RestResource(path = "findByUserId")
+    @RestResource(path = "findByUser")
     @Query("SELECT i FROM Information i WHERE i.user = :user ORDER BY i.timestamp DESC")
     List<Information> findByUser(User user);
 
