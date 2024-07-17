@@ -18,18 +18,6 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping
-    @Operation(summary = "查询所有用户", description = "查询所有用户")
-    public Result all() {
-        return Result.success(userRepository.findAll());
-    }
-
-    @GetMapping("/{name}")
-    @Operation(summary = "查询单个用户", description = "查询单个用户")
-    public Result one(@PathVariable String name) {
-        return Result.success(userRepository.findByName(name));
-    }
-
     @PostMapping
     @Operation(summary = "创建用户", description = "创建用户")
     public Result create(@RequestBody User user) {
@@ -41,15 +29,29 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/{name}")
-    @Operation(summary = "删除用户",description = "删除用户")
-    public Result delete(@PathVariable String name) {
+    @GetMapping("/login")
+    @Operation(summary = "通过id登录, 没有则添加id在登录返回其ID", description = "通过id登录, 没有则添加id在登录返回其ID")
+    public Result login(@RequestBody User user) {
+        if (userRepository.existsByOpenId(user.getOpenId())) {
+            return Result.success(user.getId());
+        } else {
+            try {
+                userRepository.save(user);
+                return Result.success(user.getId());
+            } catch (Exception e) {
+                return Result.error(e.getMessage()).addErrors(e);
+            }
+        }
+    }
+
+    @PostMapping("/update")
+    @Operation(summary = "更新用户信息", description = "更新用户信息")
+    public Result update(@RequestBody User user) {
         try {
-            userRepository.deleteByName(name);
+            userRepository.update(user.getId(), user.getName(), user.getAge(), user.getGender());
             return Result.success();
         } catch (Exception e) {
             return Result.error(e.getMessage()).addErrors(e);
         }
     }
-
 }

@@ -13,12 +13,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 @Entity
-@Table(name = "information")
+@Table(name = "gluco")
 @Schema(description = "information of user")
-public class Information {
+public class Gluco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "information_id")
+    @Column(name = "gluco_id")
     Integer id;
 
     @ManyToOne
@@ -28,23 +28,7 @@ public class Information {
     @Column(name = "timestamp", nullable = false)
     LocalDateTime timestamp;
 
-    @Column(name = "heart_rate")
-    Integer heartRate;
-
-    @Column(name = "sao2")
-    Integer sao2;
-
-    @Column(name = "height")
-    Float height;
-
-    @Column(name = "weight")
-    Float weight;
-
-    @Column(name = "pressure")
-    Float pressure;
-
-    @Column(name = "gluco_type")
-    Integer glucoType;
-
+    @Column(name = "gluco_value")
+    Integer glucoValue;
 
 }
