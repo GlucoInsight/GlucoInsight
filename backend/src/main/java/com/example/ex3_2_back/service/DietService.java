@@ -31,8 +31,11 @@ public class DietService {
         List<Diet> dietList = new ArrayList<>();
         JsonNode rootNode = objectMapper.readTree(responseBody);
 
-        if (rootNode.isArray()) {
-            for (JsonNode node : rootNode) {
+        // 获取 "data" 字段，这是一个数组
+        JsonNode dataNode = rootNode.get("data");
+
+        if (dataNode.isArray()) {
+            for (JsonNode node : dataNode) {
                 LocalDateTime startTime = LocalDateTime.parse(node.get("timestamp_start").asText());
                 LocalDateTime endTime = LocalDateTime.parse(node.get("timestamp_end").asText());
                 Float protein = Float.parseFloat(node.get("protein").asText());

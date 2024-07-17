@@ -79,7 +79,7 @@ public class GlucoController {
             LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
             // 获取24h前的时间
             LocalDateTime yesterday = now.minusDays(1);
-            return Result.success(glucoRepository.findByUserAndTimestampBetween(user, yesterday, now));
+            return Result.success(glucoRepository.findByUserAndTimestampBetweenDesc(user, yesterday, now));
         } catch (Exception e) {
             return Result.error(e.getMessage()).addErrors(e);
         }
@@ -92,7 +92,7 @@ public class GlucoController {
         try {
             // 将精确到日期的时间转换为当天的时间段范围
             LocalDateTime[] range = getTimestampRange(day);
-            return Result.success(glucoRepository.findByUserAndTimestampBetween(user, range[0], range[1]));
+            return Result.success(glucoRepository.findByUserAndTimestampBetweenDesc(user, range[0], range[1]));
         } catch (Exception e) {
             return Result.error(e.getMessage()).addErrors(e);
         }
@@ -127,7 +127,7 @@ public class GlucoController {
             LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
             // 获取24小时内的数据
             LocalDateTime yesterday = now.minusDays(1);
-            List<PredictRequestAndReturn> yestdayGluco = glucoRepository.findGlucoValueByUserAndTimestampBetween(user, yesterday, now);
+            List<PredictRequestAndReturn> yestdayGluco = glucoRepository.findGlucoValueByUserAndTimestampBetweenDesc(user, yesterday, now);
             List<PredictRequestAndReturn> predictGluco = predict(yestdayGluco);
             return Result.success(predictGluco);
         } catch (Exception e) {
@@ -151,7 +151,7 @@ public class GlucoController {
             // 获取24小时内的数据
             LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
             LocalDateTime yesterday = now.minusDays(1);
-            List<PredictRequestAndReturn> glucoList = glucoRepository.findGlucoValueByUser(user);
+            List<PredictRequestAndReturn> glucoList = glucoRepository.findGlucoValueByUserDesc(user);
             Information lastInformation = informationRepository.findByUser(user).get(0);
             // predict gluco type
             Integer glucoType = predictGlucoType(user.getAge(), lastInformation.getWeight(), lastInformation.getHeight(), glucoList);
@@ -221,7 +221,9 @@ public class GlucoController {
             if (dietRepository.findByUser(user).isEmpty()) {
                 lastEndTime = LocalDateTime.of(1970, 1, 1, 0, 0, 0);
             }
-            lastEndTime = dietRepository.findByUser(user).get(0).getEndTime();
+            else {
+                lastEndTime = dietRepository.findByUser(user).get(0).getEndTime();
+            }
             // 获取当前时间
             LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
 
