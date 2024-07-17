@@ -25,14 +25,17 @@ public class DietService {
     }
 
     public List<Diet> predictDiet(List<Gluco> glucoList, Integer userId) throws IOException {
-        ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_diet");
+        ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_nutrients");
         String responseBody = response.getBody();
 
         List<Diet> dietList = new ArrayList<>();
         JsonNode rootNode = objectMapper.readTree(responseBody);
 
-        if (rootNode.isArray()) {
-            for (JsonNode node : rootNode) {
+        // 获取 "data" 字段，这是一个数组
+        JsonNode dataNode = rootNode.get("data");
+
+        if (dataNode.isArray()) {
+            for (JsonNode node : dataNode) {
                 LocalDateTime startTime = LocalDateTime.parse(node.get("timestamp_start").asText());
                 LocalDateTime endTime = LocalDateTime.parse(node.get("timestamp_end").asText());
                 Float protein = Float.parseFloat(node.get("protein").asText());
