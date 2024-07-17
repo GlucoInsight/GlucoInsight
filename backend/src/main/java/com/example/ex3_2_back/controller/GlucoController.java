@@ -1,9 +1,11 @@
 package com.example.ex3_2_back.controller;
 
 import com.example.ex3_2_back.domain.Result;
+import com.example.ex3_2_back.entity.Diet;
 import com.example.ex3_2_back.entity.Gluco;
 import com.example.ex3_2_back.entity.Information;
 import com.example.ex3_2_back.entity.User;
+import com.example.ex3_2_back.repository.DietRepository;
 import com.example.ex3_2_back.repository.GlucoRepository;
 import com.example.ex3_2_back.repository.InformationRepository;
 import com.example.ex3_2_back.repository.UserRepository;
@@ -23,6 +25,7 @@ public class GlucoController {
     private UserRepository userRepository;
     private GlucoRepository glucoRepository;
     private InformationRepository informationRepository;
+    private DietRepository dietRepository;
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -37,6 +40,11 @@ public class GlucoController {
     @Autowired
     public void setInformationRepository(InformationRepository informationRepository) {
         this.informationRepository = informationRepository;
+    }
+
+    @Autowired
+    public void setDietRepository(DietRepository dietRepository) {
+        this.dietRepository = dietRepository;
     }
 
     @GetMapping
@@ -176,6 +184,32 @@ public class GlucoController {
 
     private List<Gluco> parseRawData(User user, String rawData) {
         // TODO: Parse Raw Data
+        return null;
+    }
+
+    @PostMapping("/predict_diet")
+    @Operation(summary = "通过用户获取饮食", description = "通过用户获取饮食")
+    public Result addDiet(@RequestParam("user_id") Integer userId) {
+        User user = userRepository.findById(userId).orElse(null);
+        try {
+            // 获取上次饮食信息
+            LocalDateTime lastEndTime = dietRepository.findByUser(user).get(0).getEndTime();
+            // 获取当前时间
+            LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+            List<Gluco> glucoList = glucoRepository.findByUserAndTimestampBetween(user, lastEndTime, now);
+            // predict diet
+            List<Diet> dietList = predictDiet(glucoList);
+            // 添加Diet
+            dietRepository.saveAll(dietList);
+            return Result.success(dietList);
+        } catch (Exception e) {
+            return Result.error(e.getMessage()).addErrors(e);
+        }
+    }
+
+    private List<Diet> predictDiet(List<Gluco> glucoList) {
+        // TODO: Predict Diet
         return null;
     }
 }

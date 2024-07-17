@@ -25,8 +25,11 @@ public class Diet {
     @JoinColumn(name = "user_id", nullable = false)
     User user;
 
-    @Column(name = "timestamp", nullable = false)
-    LocalDateTime timestamp;
+    @Column(name = "start_time", nullable = false)
+    LocalDateTime startTime;
+
+    @Column(name = "end_time", nullable = false)
+    LocalDateTime endTime;
 
     @Column(name = "carbohydrate")
     Float carbohydrate;
