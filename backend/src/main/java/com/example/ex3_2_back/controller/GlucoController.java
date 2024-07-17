@@ -147,7 +147,7 @@ public class GlucoController {
             // 获取24小时内的数据
             LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
             LocalDateTime yesterday = now.minusDays(1);
-            List<PredictRequestAndReturn> glucoList = glucoRepository.findGlucoValueByUserAndTimestampBetween(user, yesterday, now);
+            List<PredictRequestAndReturn> glucoList = glucoRepository.findGlucoValueByUser(user);
             Information lastInformation = informationRepository.findByUser(user).get(0);
             // predict gluco type
             Integer glucoType = predictGlucoType(user.getAge(), lastInformation.getWeight(), lastInformation.getHeight(), glucoList);
@@ -212,8 +212,12 @@ public class GlucoController {
     public Result addDiet(@RequestParam("user_id") Integer userId) {
         User user = userRepository.findById(userId).orElse(null);
         try {
-            // 获取上次饮食信息
-            LocalDateTime lastEndTime = dietRepository.findByUser(user).get(0).getEndTime();
+            LocalDateTime lastEndTime = null;
+            // 如果存在，获取上次饮食信息，没有则设为时间戳最开始
+            if (dietRepository.findByUser(user).isEmpty()) {
+                lastEndTime = LocalDateTime.of(1970, 1, 1, 0, 0, 0);
+            }
+            lastEndTime = dietRepository.findByUser(user).get(0).getEndTime();
             // 获取当前时间
             LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
 

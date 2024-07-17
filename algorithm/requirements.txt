@@ -24,3 +24,5 @@ Werkzeug==2.3.6
 zipp==3.16.1
 pandas
 scikit-learn==1.2.2
+scipy==1.11.4
+tensorflow==2.15.0

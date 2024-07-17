@@ -33,4 +33,9 @@ public interface GlucoRepository extends JpaRepository<Gluco, String> {
     @RestResource(path = "findGlucoValueByUserAndTimestampBetween")
     @Query("SELECT new com.example.ex3_2_back.domain.PredictRequestAndReturn(g.timestamp, g.glucoValue) FROM Gluco g WHERE g.user = :user AND g.timestamp BETWEEN :yesterday AND :now ORDER BY g.timestamp DESC")
     List<PredictRequestAndReturn> findGlucoValueByUserAndTimestampBetween(User user, LocalDateTime yesterday, LocalDateTime now);
+
+    @Operation(summary = "通过用户查找血糖信息按时间戳从后到前排序")
+    @RestResource(path = "findGlucoValueByUser")
+    @Query("SELECT new com.example.ex3_2_back.domain.PredictRequestAndReturn(g.timestamp, g.glucoValue) FROM Gluco g WHERE g.user = :user ORDER BY g.timestamp DESC")
+    List<PredictRequestAndReturn> findGlucoValueByUser(User user);
 }
