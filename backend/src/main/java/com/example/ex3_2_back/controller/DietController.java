@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/diet")
-public class DietCoontroller {
+public class DietController {
     private DietRepository dietRepository;
     private UserRepository userRepository;
 
