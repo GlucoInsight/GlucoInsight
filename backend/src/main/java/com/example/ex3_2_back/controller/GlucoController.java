@@ -11,6 +11,7 @@ import com.example.ex3_2_back.repository.DietRepository;
 import com.example.ex3_2_back.repository.GlucoRepository;
 import com.example.ex3_2_back.repository.InformationRepository;
 import com.example.ex3_2_back.repository.UserRepository;
+import com.example.ex3_2_back.service.DietService;
 import com.example.ex3_2_back.service.FlaskService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,9 @@ public class GlucoController {
 
     @Autowired
     private FlaskService flaskService;
+
+    @Autowired
+    private DietService dietService;
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -223,19 +227,12 @@ public class GlucoController {
 
             List<Gluco> glucoList = glucoRepository.findByUserAndTimestampBetween(user, lastEndTime, now);
             // predict diet
-            List<Diet> dietList = predictDiet(glucoList);
+            List<Diet> dietList = dietService.predictDiet(glucoList, user.getId());
             // 添加Diet
             dietRepository.saveAll(dietList);
             return Result.success(dietList);
         } catch (Exception e) {
             return Result.error(e.getMessage()).addErrors(e);
         }
-    }
-
-    private List<Diet> predictDiet(List<Gluco> glucoList) throws IOException {
-        ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_diet");
-        JSONObject jsonObject = new JSONObject(response.getBody());
-        List<Diet> dietList = jsonObject.getJSONArray("predict_diet").toList(Diet.class);
-        return dietList;
     }
 }

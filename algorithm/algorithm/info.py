@@ -6,6 +6,7 @@ from utils._error import err_resp
 
 from infer.glucotype import glucotype_predict
 from infer.cal_neutri import nutrients_predict
+from infer.identify_meal import meal_pattern_multiple_identify
 
 import os
 
@@ -62,15 +63,24 @@ def predict_nutrients(*args, **kwargs):
   data = request.get_json()
   # preprocess
   glucoList = data["glucoList"]
+  timestamps = [gluco["timestamp"] for gluco in glucoList]
   cgm_time_series = [gluco["predictGluco"] for gluco in glucoList]
 
-  result = nutrients_predict(cgm_time_series)
-  print(f"预测的营养素: 蛋白质: {result[2][0][0]:.2f}g, 脂肪: {result[0][0][0]:.2f}g, 碳水化合物: {result[1][0][0]:.2f}g")
-  result_body = {
-    "protein": result[2][0][0],
-    "fat": result[0][0][0],
-    "carbohydrate": result[1][0][0]
-  }
+  identified_meal_timestamps_range = meal_pattern_multiple_identify(cgm_time_series, timestamps)
+
+  result_body = []
+  for (timestamp_start, timestamp_end) in identified_meal_timestamps_range:
+    # 获取对应timestamp的index
+    timestamp_start_idx = timestamps.index(timestamp_start)
+    timestamp_end_idx = timestamps.index(timestamp_end)
+    nutrients_predict_result = nutrients_predict(cgm_time_series[timestamp_start_idx:timestamp_end_idx])
+    result_body.append({
+      "timestamp_start": timestamp_start,
+      "timestamp_end": timestamp_end,
+      "protein": nutrients_predict_result[2][0][0],
+      "fat": nutrients_predict_result[0][0][0],
+      "carbohydrate": nutrients_predict_result[1][0][0]
+    })
 
   resp(response_body(200, "predict_nutrients", result_body))
 

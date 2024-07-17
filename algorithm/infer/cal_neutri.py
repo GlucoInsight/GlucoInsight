@@ -7,14 +7,17 @@ import tensorflow as tf
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, LSTM, Dense
 import pickle
+import os
+
+PATH = os.path.dirname(os.path.abspath(__file__))
 
 
 # 加载模型和标准化器
 def load_model():
-    with open('model_weights.pkl', 'rb') as f:
+    with open(os.path.join(PATH, 'model_weights.pkl'), 'rb') as f:
         model_weights = pickle.load(f)
 
-    with open('scaler_params.pkl', 'rb') as f:
+    with open(os.path.join(PATH, 'scaler_params.pkl'), 'rb') as f:
         scaler_params = pickle.load(f)
 
     scaler = StandardScaler()
