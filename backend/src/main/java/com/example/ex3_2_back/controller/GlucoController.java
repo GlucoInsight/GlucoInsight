@@ -147,11 +147,12 @@ public class GlucoController {
             // 获取24小时内的数据
             LocalDateTime now = LocalDateTime.now().atZone(ZoneId.systemDefault()).toLocalDateTime();
             LocalDateTime yesterday = now.minusDays(1);
-            List<Gluco> glucoList = glucoRepository.findByUserAndTimestampBetween(user, yesterday, now);
-            // predict gluco type
-            Integer glucoType = predictGlucoType(glucoList);
-            // 添加Information
+            List<PredictRequestAndReturn> glucoList = glucoRepository.findGlucoValueByUserAndTimestampBetween(user, yesterday, now);
             Information lastInformation = informationRepository.findByUser(user).get(0);
+            // predict gluco type
+            Integer glucoType = predictGlucoType(user.getAge(), lastInformation.getWeight(), lastInformation.getHeight(), glucoList);
+            // 添加Information
+
             Information information = Information.builder()
                     .user(user)
                     .timestamp(now)
@@ -170,10 +171,17 @@ public class GlucoController {
         }
     }
 
-    private Integer predictGlucoType(List<Gluco> glucoList) throws IOException {
-        ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_gluco_type");
+    private Integer predictGlucoType(Integer age, Float weight, Float height, List<PredictRequestAndReturn> glucoList) throws IOException {
+        Float bmi = weight / (height * height);
+        // 将age, bmi和glucoList合并在一起为一个JSON
+        JSONObject requestBody = new JSONObject();
+        requestBody.put("age", age);
+        requestBody.put("bmi", bmi);
+        requestBody.put("glucoList", glucoList);
+        ResponseEntity<String> response = flaskService.callFlaskEndpoint(requestBody, "/predict_gluco_type");
+
         JSONObject jsonObject = new JSONObject(response.getBody());
-        Integer glucoType = jsonObject.getInt("gluco_type");
+        Integer glucoType = jsonObject.getInt("data");
         return glucoType;
     }
 

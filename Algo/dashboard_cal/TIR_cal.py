@@ -1,5 +1,6 @@
 from datetime import datetime
 
+# 直接放到前端
 def calculate_blood_glucose_metrics(glucose_data):
     # 定义血糖范围（单位: mg/dL）
     low_threshold = 70
