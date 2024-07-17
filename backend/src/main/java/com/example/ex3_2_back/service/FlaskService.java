@@ -1,6 +1,7 @@
 package com.example.ex3_2_back.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -24,6 +25,8 @@ public class FlaskService {
 
         // 使用ObjectMapper将对象转换为JSON字符串
         ObjectMapper objectMapper = new ObjectMapper();
+        // 注册 JavaTimeModule 模块
+        objectMapper.registerModule(new JavaTimeModule());
         String jsonRequestData = objectMapper.writeValueAsString(requestData);
 
         // 设置请求头

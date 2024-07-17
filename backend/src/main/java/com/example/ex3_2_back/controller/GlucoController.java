@@ -32,6 +32,7 @@ public class GlucoController {
     private InformationRepository informationRepository;
     private DietRepository dietRepository;
 
+    @Autowired
     private FlaskService flaskService;
 
     @Autowired
