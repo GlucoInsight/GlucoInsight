@@ -25,7 +25,7 @@ public class DietService {
     }
 
     public List<Diet> predictDiet(List<Gluco> glucoList, Integer userId) throws IOException {
-        ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_diet");
+        ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_nutrients");
         String responseBody = response.getBody();
 
         List<Diet> dietList = new ArrayList<>();
