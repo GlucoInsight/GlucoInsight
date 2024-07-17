@@ -1,6 +1,7 @@
 package com.example.ex3_2_back.controller;
 
 import cn.hutool.json.JSONObject;
+import com.example.ex3_2_back.domain.PredictRequestAndReturn;
 import com.example.ex3_2_back.domain.Result;
 import com.example.ex3_2_back.entity.Diet;
 import com.example.ex3_2_back.entity.Gluco;
@@ -128,31 +129,7 @@ public class GlucoController {
             return Result.error(e.getMessage()).addErrors(e);
         }
     }
-    public class PredictRequestAndReturn {
-        LocalDateTime timestamp;
-        Float predictGluco;
 
-        public PredictRequestAndReturn(LocalDateTime timestamp, Float predictGluco) {
-            this.timestamp = timestamp;
-            this.predictGluco = predictGluco;
-        }
-
-        public LocalDateTime getTimestamp() {
-            return timestamp;
-        }
-
-        public void setTimestamp(LocalDateTime timestamp) {
-            this.timestamp = timestamp;
-        }
-
-        public Float getPredictGluco() {
-            return predictGluco;
-        }
-
-        public void setPredictGluco(Float predictGluco) {
-            this.predictGluco = predictGluco;
-        }
-    }
 
     public List<PredictRequestAndReturn> predict(List<PredictRequestAndReturn> glucoList) throws IOException {
         ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_gluco");

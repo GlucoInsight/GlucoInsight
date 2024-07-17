@@ -29,6 +29,6 @@ public class Gluco {
     LocalDateTime timestamp;
 
     @Column(name = "gluco_value")
-    Integer glucoValue;
+    Float glucoValue;
 
 }
