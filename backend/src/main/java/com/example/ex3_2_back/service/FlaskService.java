@@ -35,7 +35,7 @@ public class FlaskService {
 
         // 发送POST请求
         ResponseEntity<String> response = restTemplate.postForEntity(url, requestEntity, String.class);
-        
+
         return response;
     }
 

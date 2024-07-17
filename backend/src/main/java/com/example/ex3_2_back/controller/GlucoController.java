@@ -1,5 +1,6 @@
 package com.example.ex3_2_back.controller;
 
+import cn.hutool.json.JSONObject;
 import com.example.ex3_2_back.domain.Result;
 import com.example.ex3_2_back.entity.Diet;
 import com.example.ex3_2_back.entity.Gluco;
@@ -9,10 +10,13 @@ import com.example.ex3_2_back.repository.DietRepository;
 import com.example.ex3_2_back.repository.GlucoRepository;
 import com.example.ex3_2_back.repository.InformationRepository;
 import com.example.ex3_2_back.repository.UserRepository;
+import com.example.ex3_2_back.service.FlaskService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -26,6 +30,8 @@ public class GlucoController {
     private GlucoRepository glucoRepository;
     private InformationRepository informationRepository;
     private DietRepository dietRepository;
+
+    private FlaskService flaskService;
 
     @Autowired
     public void setUserRepository(UserRepository userRepository) {
@@ -116,7 +122,6 @@ public class GlucoController {
             // 获取24小时内的数据
             LocalDateTime yesterday = now.minusDays(1);
             List<Gluco> yestdayGluco = glucoRepository.findByUserAndTimestampBetween(user, yesterday, now);
-            // TODO: Predict
             List<Gluco> predictGluco = predict(yestdayGluco);
             return Result.success(predictGluco);
         } catch (Exception e) {
@@ -124,9 +129,11 @@ public class GlucoController {
         }
     }
 
-    public List<Gluco> predict(List<Gluco> glucoList) {
-        // TODO: Predict
-        return glucoList;
+    public List<Gluco> predict(List<Gluco> glucoList) throws IOException {
+        ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_gluco");
+        JSONObject jsonObject = new JSONObject(response.getBody());
+        List<Gluco> predictGluco = jsonObject.getJSONArray("predict_gluco").toList(Gluco.class);
+        return predictGluco;
     }
 
     @GetMapping("/gluco_type")
@@ -160,9 +167,11 @@ public class GlucoController {
         }
     }
 
-    private Integer predictGlucoType(List<Gluco> glucoList) {
-        // TODO: Predict GlucoType
-        return 0;
+    private Integer predictGlucoType(List<Gluco> glucoList) throws IOException {
+        ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_gluco_type");
+        JSONObject jsonObject = new JSONObject(response.getBody());
+        Integer glucoType = jsonObject.getInt("gluco_type");
+        return glucoType;
     }
 
 
@@ -208,8 +217,10 @@ public class GlucoController {
         }
     }
 
-    private List<Diet> predictDiet(List<Gluco> glucoList) {
-        // TODO: Predict Diet
-        return null;
+    private List<Diet> predictDiet(List<Gluco> glucoList) throws IOException {
+        ResponseEntity<String> response = flaskService.callFlaskEndpoint(glucoList, "/predict_diet");
+        JSONObject jsonObject = new JSONObject(response.getBody());
+        List<Diet> dietList = jsonObject.getJSONArray("predict_diet").toList(Diet.class);
+        return dietList;
     }
 }
