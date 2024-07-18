@@ -10,6 +10,7 @@ from utils._error import err_resp
 from infer.glucotype import glucotype_predict
 from infer.cal_neutri import nutrients_predict
 from infer.identify_meal import meal_pattern_multiple_identify
+from gpt_call import gpt_call
 
 import os
 
@@ -99,3 +100,14 @@ def predict_nutrients(*args, **kwargs):
 
 
     resp(response_body(200, "predict_nutrients", result_body))
+
+@algorithm_bp.route('/chatgpt', methods=["POST"])
+@before
+def chatgpt(*args, **kwargs):
+  data = request.get_json()
+  json_object = json.loads(data)
+
+  prompt = json_object["prompt"]
+  response_data = gpt_call(prompt)
+  resp(response_body(200, "chatgpt", response_data))
+
