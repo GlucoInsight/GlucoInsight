@@ -141,10 +141,10 @@ struct UserDetailView: View {
 //     }
 // }
 
-struct UserDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        // 创建一个示例UserInfo对象用于预览
-        var userInfo = UserInfo(name: "HAN RONG", age: "21", height: "173", weight: "70")
-        UserDetailView(userInfo: userInfo)
-    }
-}
+//struct UserDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        // 创建一个示例UserInfo对象用于预览
+//        var userInfo = UserInfo(name: "HAN RONG", age: "21", height: "173", weight: "70")
+//        UserDetailView(userInfo: userInfo)
+//    }
+//}
