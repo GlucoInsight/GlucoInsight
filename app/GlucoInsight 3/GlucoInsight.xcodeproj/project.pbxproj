@@ -1,0 +1,453 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		007850BA2C493FAB00BD7C78 /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007850B92C493FAB00BD7C78 /* DemoView.swift */; };
+		007850BC2C4947BB00BD7C78 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007850BB2C4947BB00BD7C78 /* UserDetailView.swift */; };
+		007850BE2C49522F00BD7C78 /* DoubleWheelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007850BD2C49522F00BD7C78 /* DoubleWheelPickerView.swift */; };
+		E36D337A2C48F3B100FBDCB3 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36D33792C48F3B100FBDCB3 /* TypeView.swift */; };
+		E36D337C2C48FAB400FBDCB3 /* Diet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36D337B2C48FAB400FBDCB3 /* Diet.swift */; };
+		E36D337E2C48FF8900FBDCB3 /* DietService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36D337D2C48FF8900FBDCB3 /* DietService.swift */; };
+		E36D33802C491B4300FBDCB3 /* GlucoseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36D337F2C491B4300FBDCB3 /* GlucoseService.swift */; };
+		E36D33822C491EF100FBDCB3 /* GlucoseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36D33812C491EF100FBDCB3 /* GlucoseData.swift */; };
+		E3EF93622C47EEBB00A71BD4 /* GlucoInsightApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF93612C47EEBB00A71BD4 /* GlucoInsightApp.swift */; };
+		E3EF93642C47EEBB00A71BD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF93632C47EEBB00A71BD4 /* ContentView.swift */; };
+		E3EF93662C47EEBB00A71BD4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF93652C47EEBB00A71BD4 /* Item.swift */; };
+		E3EF93682C47EEBE00A71BD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3EF93672C47EEBE00A71BD4 /* Assets.xcassets */; };
+		E3EF936B2C47EEBE00A71BD4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3EF936A2C47EEBE00A71BD4 /* Preview Assets.xcassets */; };
+		E3EF93722C47FEEC00A71BD4 /* BloodGlucoseChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF93712C47FEEC00A71BD4 /* BloodGlucoseChartView.swift */; };
+		E3EF93772C480C8C00A71BD4 /* FoodDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF93762C480C8C00A71BD4 /* FoodDetailsView.swift */; };
+		E3EF93792C48127F00A71BD4 /* FoodDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF93782C48127F00A71BD4 /* FoodDataView.swift */; };
+		E3EF937B2C481B0400A71BD4 /* DietRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF937A2C481B0400A71BD4 /* DietRecommendationView.swift */; };
+		E3EF937F2C4898BD00A71BD4 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF937E2C4898BD00A71BD4 /* UserInfo.swift */; };
+		E3EF93812C4898E500A71BD4 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF93802C4898E500A71BD4 /* UserInfoView.swift */; };
+		E3EF93842C489DC600A71BD4 /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF93832C489DC600A71BD4 /* UserInfoService.swift */; };
+		E3EF93872C48A21400A71BD4 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF93862C48A21400A71BD4 /* NotificationManager.swift */; };
+		E3EF93892C48B14B00A71BD4 /* SportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3EF93882C48B14B00A71BD4 /* SportsView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		007850B92C493FAB00BD7C78 /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
+		007850BB2C4947BB00BD7C78 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
+		007850BD2C49522F00BD7C78 /* DoubleWheelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleWheelPickerView.swift; sourceTree = "<group>"; };
+		E36D33792C48F3B100FBDCB3 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
+		E36D337B2C48FAB400FBDCB3 /* Diet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diet.swift; sourceTree = "<group>"; };
+		E36D337D2C48FF8900FBDCB3 /* DietService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietService.swift; sourceTree = "<group>"; };
+		E36D337F2C491B4300FBDCB3 /* GlucoseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseService.swift; sourceTree = "<group>"; };
+		E36D33812C491EF100FBDCB3 /* GlucoseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoseData.swift; sourceTree = "<group>"; };
+		E3EF935E2C47EEBB00A71BD4 /* GlucoInsight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlucoInsight.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3EF93612C47EEBB00A71BD4 /* GlucoInsightApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlucoInsightApp.swift; sourceTree = "<group>"; };
+		E3EF93632C47EEBB00A71BD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E3EF93652C47EEBB00A71BD4 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		E3EF93672C47EEBE00A71BD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E3EF936A2C47EEBE00A71BD4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E3EF93712C47FEEC00A71BD4 /* BloodGlucoseChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodGlucoseChartView.swift; sourceTree = "<group>"; };
+		E3EF93762C480C8C00A71BD4 /* FoodDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDetailsView.swift; sourceTree = "<group>"; };
+		E3EF93782C48127F00A71BD4 /* FoodDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodDataView.swift; sourceTree = "<group>"; };
+		E3EF937A2C481B0400A71BD4 /* DietRecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietRecommendationView.swift; sourceTree = "<group>"; };
+		E3EF937E2C4898BD00A71BD4 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		E3EF93802C4898E500A71BD4 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		E3EF93832C489DC600A71BD4 /* UserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
+		E3EF93852C489F8100A71BD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E3EF93862C48A21400A71BD4 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		E3EF93882C48B14B00A71BD4 /* SportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E3EF935B2C47EEBB00A71BD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E3EF93552C47EEBB00A71BD4 = {
+			isa = PBXGroup;
+			children = (
+				E3EF93602C47EEBB00A71BD4 /* GlucoInsight */,
+				E3EF935F2C47EEBB00A71BD4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E3EF935F2C47EEBB00A71BD4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E3EF935E2C47EEBB00A71BD4 /* GlucoInsight.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E3EF93602C47EEBB00A71BD4 /* GlucoInsight */ = {
+			isa = PBXGroup;
+			children = (
+				E3EF93852C489F8100A71BD4 /* Info.plist */,
+				E3EF93822C489DAE00A71BD4 /* service */,
+				E3EF937D2C48986300A71BD4 /* views */,
+				E3EF937C2C48985600A71BD4 /* models */,
+				E3EF93612C47EEBB00A71BD4 /* GlucoInsightApp.swift */,
+				E3EF93672C47EEBE00A71BD4 /* Assets.xcassets */,
+				E3EF93692C47EEBE00A71BD4 /* Preview Content */,
+			);
+			path = GlucoInsight;
+			sourceTree = "<group>";
+		};
+		E3EF93692C47EEBE00A71BD4 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E3EF936A2C47EEBE00A71BD4 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E3EF937C2C48985600A71BD4 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				E3EF93652C47EEBB00A71BD4 /* Item.swift */,
+				E3EF937E2C4898BD00A71BD4 /* UserInfo.swift */,
+				E36D337B2C48FAB400FBDCB3 /* Diet.swift */,
+				E36D33812C491EF100FBDCB3 /* GlucoseData.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		E3EF937D2C48986300A71BD4 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				E3EF93762C480C8C00A71BD4 /* FoodDetailsView.swift */,
+				E3EF93782C48127F00A71BD4 /* FoodDataView.swift */,
+				E3EF93712C47FEEC00A71BD4 /* BloodGlucoseChartView.swift */,
+				007850B92C493FAB00BD7C78 /* DemoView.swift */,
+				E3EF937A2C481B0400A71BD4 /* DietRecommendationView.swift */,
+				E3EF93632C47EEBB00A71BD4 /* ContentView.swift */,
+				E3EF93802C4898E500A71BD4 /* UserInfoView.swift */,
+				E3EF93882C48B14B00A71BD4 /* SportsView.swift */,
+				E36D33792C48F3B100FBDCB3 /* TypeView.swift */,
+				007850BB2C4947BB00BD7C78 /* UserDetailView.swift */,
+				007850BD2C49522F00BD7C78 /* DoubleWheelPickerView.swift */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		E3EF93822C489DAE00A71BD4 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				E3EF93832C489DC600A71BD4 /* UserInfoService.swift */,
+				E3EF93862C48A21400A71BD4 /* NotificationManager.swift */,
+				E36D337D2C48FF8900FBDCB3 /* DietService.swift */,
+				E36D337F2C491B4300FBDCB3 /* GlucoseService.swift */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E3EF935D2C47EEBB00A71BD4 /* GlucoInsight */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3EF936E2C47EEBE00A71BD4 /* Build configuration list for PBXNativeTarget "GlucoInsight" */;
+			buildPhases = (
+				E3EF935A2C47EEBB00A71BD4 /* Sources */,
+				E3EF935B2C47EEBB00A71BD4 /* Frameworks */,
+				E3EF935C2C47EEBB00A71BD4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GlucoInsight;
+			packageProductDependencies = (
+			);
+			productName = GlucoInsight;
+			productReference = E3EF935E2C47EEBB00A71BD4 /* GlucoInsight.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E3EF93562C47EEBB00A71BD4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1540;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					E3EF935D2C47EEBB00A71BD4 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+				};
+			};
+			buildConfigurationList = E3EF93592C47EEBB00A71BD4 /* Build configuration list for PBXProject "GlucoInsight" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E3EF93552C47EEBB00A71BD4;
+			packageReferences = (
+			);
+			productRefGroup = E3EF935F2C47EEBB00A71BD4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E3EF935D2C47EEBB00A71BD4 /* GlucoInsight */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E3EF935C2C47EEBB00A71BD4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3EF936B2C47EEBE00A71BD4 /* Preview Assets.xcassets in Resources */,
+				E3EF93682C47EEBE00A71BD4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E3EF935A2C47EEBB00A71BD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				007850BC2C4947BB00BD7C78 /* UserDetailView.swift in Sources */,
+				E3EF93812C4898E500A71BD4 /* UserInfoView.swift in Sources */,
+				E36D337C2C48FAB400FBDCB3 /* Diet.swift in Sources */,
+				E36D33802C491B4300FBDCB3 /* GlucoseService.swift in Sources */,
+				E3EF93892C48B14B00A71BD4 /* SportsView.swift in Sources */,
+				E3EF93642C47EEBB00A71BD4 /* ContentView.swift in Sources */,
+				E3EF93772C480C8C00A71BD4 /* FoodDetailsView.swift in Sources */,
+				E3EF93722C47FEEC00A71BD4 /* BloodGlucoseChartView.swift in Sources */,
+				E3EF93872C48A21400A71BD4 /* NotificationManager.swift in Sources */,
+				E3EF93662C47EEBB00A71BD4 /* Item.swift in Sources */,
+				E36D337A2C48F3B100FBDCB3 /* TypeView.swift in Sources */,
+				007850BE2C49522F00BD7C78 /* DoubleWheelPickerView.swift in Sources */,
+				E3EF937F2C4898BD00A71BD4 /* UserInfo.swift in Sources */,
+				E3EF93842C489DC600A71BD4 /* UserInfoService.swift in Sources */,
+				E3EF93792C48127F00A71BD4 /* FoodDataView.swift in Sources */,
+				007850BA2C493FAB00BD7C78 /* DemoView.swift in Sources */,
+				E36D337E2C48FF8900FBDCB3 /* DietService.swift in Sources */,
+				E3EF93622C47EEBB00A71BD4 /* GlucoInsightApp.swift in Sources */,
+				E3EF937B2C481B0400A71BD4 /* DietRecommendationView.swift in Sources */,
+				E36D33822C491EF100FBDCB3 /* GlucoseData.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		E3EF936C2C47EEBE00A71BD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E3EF936D2C47EEBE00A71BD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E3EF936F2C47EEBE00A71BD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GlucoInsight/Preview Content\"";
+				DEVELOPMENT_TEAM = S5J5NV64CQ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GlucoInsight/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.neurospark.GlucoInsight;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E3EF93702C47EEBE00A71BD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"GlucoInsight/Preview Content\"";
+				DEVELOPMENT_TEAM = S5J5NV64CQ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GlucoInsight/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.neurospark.GlucoInsight;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E3EF93592C47EEBB00A71BD4 /* Build configuration list for PBXProject "GlucoInsight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3EF936C2C47EEBE00A71BD4 /* Debug */,
+				E3EF936D2C47EEBE00A71BD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3EF936E2C47EEBE00A71BD4 /* Build configuration list for PBXNativeTarget "GlucoInsight" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3EF936F2C47EEBE00A71BD4 /* Debug */,
+				E3EF93702C47EEBE00A71BD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E3EF93562C47EEBB00A71BD4 /* Project object */;
+}
