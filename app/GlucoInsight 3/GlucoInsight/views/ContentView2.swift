@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ContentView2.swift
 //  GlucoInsight
 //
 //  Created by Rong Han & Sichao He on 2024/7/17.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView2: View {
     
     @State private var userInfo: UserInfo = UserInfo(name: "XX", age: "XX", height: "XX", weight: "XX")
     @State private var glucoType: Int = 0
@@ -82,7 +82,7 @@ struct ContentView: View {
     
     private func fetchGlucoseData() {
         let glucoseService = GlucoseService()
-        glucoseService.fetchGlucoseData { readings in
+        glucoseService.fetchGlucoseData2 { readings in
             if let readings = readings {
                 DispatchQueue.main.async {
                     self.glucoseData = readings
@@ -97,7 +97,7 @@ struct ContentView: View {
         isLoading = true
         errorMessage = nil
         
-        UserInfoService().fetchLatestUserInfo { userDetail in
+        UserInfoService().fetchLatestUserInfo2 { userDetail in
             DispatchQueue.main.async {
                 isLoading = false
                 if let userDetail = userDetail {
@@ -114,7 +114,7 @@ struct ContentView: View {
         
         let dietService = DietService()
         
-        dietService.fetchDietData { sortedDiets in
+        dietService.fetchDietData2 { sortedDiets in
             guard let sortedDiets = sortedDiets else {
                 print("Failed to fetch or decode data.")
                 return
@@ -149,12 +149,58 @@ struct ContentView: View {
 
 
 
-struct ContentView_Previews: PreviewProvider {
+
+//MARK: - 运动模式按钮
+struct CustomButton: View {
+    let action: () -> Void
+    
+    var body: some View {
+        ZStack {
+            // Background container
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.blue.opacity(0.2))
+                .frame(height: 50)
+            
+            // Text layers
+            HStack {
+                Spacer()
+                Text("运动")
+                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                    .italic()
+                    .foregroundColor(.blue)
+                Spacer()
+                Spacer()
+                Text("模式")
+                    .font(.system(size: 18, weight: .semibold, design: .rounded))
+                    .italic()
+                    .foregroundColor(.blue)
+                Spacer()
+            }
+            .frame(height: 50)
+            
+            // Clickable circle button
+            Button(action: action) {
+                Circle()
+                    .fill(Color.blue)
+                    .frame(width: 60, height: 60)
+                    .overlay(
+                        Image(systemName: "figure.run")
+                            .foregroundColor(.white)
+                    )
+            }
+            .buttonStyle(PlainButtonStyle())
+        }
+        .frame(height: 50)
+    }
+}
+
+
+struct ContentView2_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
+            ContentView2()
                 .preferredColorScheme(.light)
-            ContentView()
+            ContentView2()
                 .preferredColorScheme(.dark)
         }
     }

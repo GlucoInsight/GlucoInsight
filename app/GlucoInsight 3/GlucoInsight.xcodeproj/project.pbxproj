@@ -10,6 +10,11 @@
 		007850BA2C493FAB00BD7C78 /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007850B92C493FAB00BD7C78 /* DemoView.swift */; };
 		007850BC2C4947BB00BD7C78 /* UserDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007850BB2C4947BB00BD7C78 /* UserDetailView.swift */; };
 		007850BE2C49522F00BD7C78 /* DoubleWheelPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007850BD2C49522F00BD7C78 /* DoubleWheelPickerView.swift */; };
+		007850C02C49630500BD7C78 /* EmptyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007850BF2C49630500BD7C78 /* EmptyContentView.swift */; };
+		007850C22C49641000BD7C78 /* EmptySportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007850C12C49641000BD7C78 /* EmptySportsView.swift */; };
+		007850C42C49659500BD7C78 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007850C32C49659500BD7C78 /* ChatView.swift */; };
+		007850C62C4966AC00BD7C78 /* EmptyDietRecommendationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007850C52C4966AC00BD7C78 /* EmptyDietRecommendationView.swift */; };
+		007850C82C4985F600BD7C78 /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007850C72C4985F600BD7C78 /* ContentView2.swift */; };
 		E36D337A2C48F3B100FBDCB3 /* TypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36D33792C48F3B100FBDCB3 /* TypeView.swift */; };
 		E36D337C2C48FAB400FBDCB3 /* Diet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36D337B2C48FAB400FBDCB3 /* Diet.swift */; };
 		E36D337E2C48FF8900FBDCB3 /* DietService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E36D337D2C48FF8900FBDCB3 /* DietService.swift */; };
@@ -35,6 +40,11 @@
 		007850B92C493FAB00BD7C78 /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
 		007850BB2C4947BB00BD7C78 /* UserDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailView.swift; sourceTree = "<group>"; };
 		007850BD2C49522F00BD7C78 /* DoubleWheelPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleWheelPickerView.swift; sourceTree = "<group>"; };
+		007850BF2C49630500BD7C78 /* EmptyContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyContentView.swift; sourceTree = "<group>"; };
+		007850C12C49641000BD7C78 /* EmptySportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySportsView.swift; sourceTree = "<group>"; };
+		007850C32C49659500BD7C78 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		007850C52C4966AC00BD7C78 /* EmptyDietRecommendationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDietRecommendationView.swift; sourceTree = "<group>"; };
+		007850C72C4985F600BD7C78 /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
 		E36D33792C48F3B100FBDCB3 /* TypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeView.swift; sourceTree = "<group>"; };
 		E36D337B2C48FAB400FBDCB3 /* Diet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diet.swift; sourceTree = "<group>"; };
 		E36D337D2C48FF8900FBDCB3 /* DietService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietService.swift; sourceTree = "<group>"; };
@@ -127,11 +137,16 @@
 				007850B92C493FAB00BD7C78 /* DemoView.swift */,
 				E3EF937A2C481B0400A71BD4 /* DietRecommendationView.swift */,
 				E3EF93632C47EEBB00A71BD4 /* ContentView.swift */,
+				007850C72C4985F600BD7C78 /* ContentView2.swift */,
 				E3EF93802C4898E500A71BD4 /* UserInfoView.swift */,
 				E3EF93882C48B14B00A71BD4 /* SportsView.swift */,
 				E36D33792C48F3B100FBDCB3 /* TypeView.swift */,
 				007850BB2C4947BB00BD7C78 /* UserDetailView.swift */,
 				007850BD2C49522F00BD7C78 /* DoubleWheelPickerView.swift */,
+				007850BF2C49630500BD7C78 /* EmptyContentView.swift */,
+				007850C12C49641000BD7C78 /* EmptySportsView.swift */,
+				007850C32C49659500BD7C78 /* ChatView.swift */,
+				007850C52C4966AC00BD7C78 /* EmptyDietRecommendationView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -223,6 +238,7 @@
 			files = (
 				007850BC2C4947BB00BD7C78 /* UserDetailView.swift in Sources */,
 				E3EF93812C4898E500A71BD4 /* UserInfoView.swift in Sources */,
+				007850C42C49659500BD7C78 /* ChatView.swift in Sources */,
 				E36D337C2C48FAB400FBDCB3 /* Diet.swift in Sources */,
 				E36D33802C491B4300FBDCB3 /* GlucoseService.swift in Sources */,
 				E3EF93892C48B14B00A71BD4 /* SportsView.swift in Sources */,
@@ -238,9 +254,13 @@
 				E3EF93792C48127F00A71BD4 /* FoodDataView.swift in Sources */,
 				007850BA2C493FAB00BD7C78 /* DemoView.swift in Sources */,
 				E36D337E2C48FF8900FBDCB3 /* DietService.swift in Sources */,
+				007850C82C4985F600BD7C78 /* ContentView2.swift in Sources */,
 				E3EF93622C47EEBB00A71BD4 /* GlucoInsightApp.swift in Sources */,
+				007850C62C4966AC00BD7C78 /* EmptyDietRecommendationView.swift in Sources */,
 				E3EF937B2C481B0400A71BD4 /* DietRecommendationView.swift in Sources */,
 				E36D33822C491EF100FBDCB3 /* GlucoseData.swift in Sources */,
+				007850C02C49630500BD7C78 /* EmptyContentView.swift in Sources */,
+				007850C22C49641000BD7C78 /* EmptySportsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

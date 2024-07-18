@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  EmptyContentView.swift
 //  GlucoInsight
 //
 //  Created by Rong Han & Sichao He on 2024/7/17.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct EmptyContentView: View {
     
     @State private var userInfo: UserInfo = UserInfo(name: "XX", age: "XX", height: "XX", weight: "XX")
     @State private var glucoType: Int = 0
@@ -42,9 +42,7 @@ struct ContentView: View {
                 
                 FoodDataView(diet: dietData, historyDiets: historyDiets)
                 
-                DietRecommendationView(diet: $dietData, glucoValue: $latest10GlucoseValues)
-
-                ChatView(diet: $dietData, glucoValue: $latest10GlucoseValues)
+                EmptyDietRecommendationView(diet: $dietData, glucoValue: $latest10GlucoseValues)
                 
                 Text(motivationalQuote)
                     .italic()
@@ -56,15 +54,15 @@ struct ContentView: View {
         }
         .background(Color(UIColor.systemBackground))
         .sheet(isPresented: $showingSportsView) {
-            SportsView()
+            EmptySportsView()
         }
         .onAppear {
-            fetchUserInfo()
-            fetchDietInfo()
-            fetchGlucoseData()
-            fetchLatest10GlucoseValues()
-            fetchData()
-            requestNotificationPermission()
+            // fetchUserInfo()
+            // fetchDietInfo()
+            // fetchGlucoseData()
+            // fetchLatest10GlucoseValues()
+            // fetchData()
+            // requestNotificationPermission()
             
         }
     }
@@ -149,12 +147,14 @@ struct ContentView: View {
 
 
 
-struct ContentView_Previews: PreviewProvider {
+
+
+struct EmptyEmptyContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
+            EmptyContentView()
                 .preferredColorScheme(.light)
-            ContentView()
+            EmptyContentView()
                 .preferredColorScheme(.dark)
         }
     }

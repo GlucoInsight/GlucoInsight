@@ -49,6 +49,7 @@ struct UserInfoView: View {
                         .foregroundColor(.primary)
                 }
             }
+            .padding(.trailing, -10)
         }
         .padding(.vertical, 16)
         .padding(.horizontal, 20)

@@ -1,5 +1,5 @@
 //
-//  DietRecommendationView.swift
+//  EmptyEmptyDietRecommendationView.swift
 //  GlucoInsight
 //
 //  Created by Rong Han & Sichao He on 2024/7/17.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct DietRecommendation: Codable {
+struct EmptyDietRecommendation: Codable {
     let data: String
 }
 
-struct DietRecommendationView: View {
+struct EmptyDietRecommendationView: View {
     @State private var isUnlocked = false
     @State private var recommendations: [String] = []
     @State private var errorMessage: String? = nil
@@ -48,7 +48,7 @@ struct DietRecommendationView: View {
     private var lockedContent: some View {
         Button(action: {
             withAnimation {
-                isUnlocked = true
+                isUnlocked = false
                 isLoading = true
             }
         }) {
@@ -58,7 +58,7 @@ struct DietRecommendationView: View {
                     Image(systemName: "lock.fill")
                         .font(.system(size: 40))
                         .foregroundColor(.gray)
-                    Text("点击获取您的专属饮食推荐")
+                    Text("未佩戴传感器或初始化，无法获取建议")
                         .font(.headline)
                         .foregroundColor(.gray)
                 }
@@ -142,7 +142,7 @@ struct DietRecommendationView: View {
     }
 }
 
-struct DietRecommendationRow: View {
+struct EmptyDietRecommendationRow: View {
     let number: Int
     let text: String
     
@@ -162,7 +162,7 @@ struct DietRecommendationRow: View {
     }
 }
 
-struct LoadingView: View {
+struct EmptyLoadingView: View {
     @State private var isAnimating = false
     
     var body: some View {

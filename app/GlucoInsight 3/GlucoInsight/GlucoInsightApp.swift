@@ -2,7 +2,7 @@
 //  GlucoInsightApp.swift
 //  GlucoInsight
 //
-//  Created by YI HE on 2024/7/17.
+//  Created by Rong Han & Sichao He on 2024/7/17.
 //
 
 import SwiftUI

@@ -3,22 +3,25 @@ import SwiftUI
 struct DemoView: View {
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                NavigationLink(destination: ContentView()) {
-                    CardView(title: "demo 0", icon: "star.fill")
-                        .padding(.horizontal)
+            VStack(spacing: 30) {
+                NavigationLink(destination: EmptyContentView()) {
+                    CardView(title: "首次登录且没有连接设备", gradientColors: [Color.gray.opacity(0.7), Color.gray])
                 }
                 .buttonStyle(PlainButtonStyle())
 
-                NavigationLink(destination: DestinationView()) {
-                    CardView(title: "demo 1", icon: "heart.fill")
-                        .padding(.horizontal)
+                NavigationLink(destination: ContentView()) {
+                    CardView(title: "正常人群(已连接设备且初始化完成)", gradientColors: [Color.green.opacity(0.7), Color.green])
+                }
+                .buttonStyle(PlainButtonStyle())
+
+                NavigationLink(destination: ContentView()) {
+                    CardView(title: "高血糖人群(已连接设备且初始化完成)", gradientColors: [Color.red.opacity(0.7), Color.red])
                 }
                 .buttonStyle(PlainButtonStyle())
 
                 Spacer()
             }
-            .padding(.top)
+            .padding(.top, 50)
             .navigationTitle("Demo Selection")
             .navigationBarTitleDisplayMode(.inline)
         }
@@ -27,28 +30,23 @@ struct DemoView: View {
 
 struct CardView: View {
     var title: String
-    var icon: String
+    var gradientColors: [Color]
     
     var body: some View {
-        HStack {
-            Image(systemName: icon)
-                .font(.largeTitle)
-                .foregroundColor(.white)
-                .padding(.leading, 10)
-            
-            Text(title)
-                .font(.title2)
-                .foregroundColor(.white)
-                .padding()
-            
-            Spacer()
-        }
-        .background(
-            LinearGradient(gradient: Gradient(colors: [Color.blue, Color.purple]), startPoint: .leading, endPoint: .trailing)
-        )
-        .cornerRadius(15)
-        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 5)
-        .padding(.horizontal)
+        Text(title)
+            .font(.title3)
+            .fontWeight(.bold)
+            .foregroundColor(.white)
+            .multilineTextAlignment(.center)
+            .padding()
+            .frame(maxWidth: .infinity)
+            .frame(height: 100)
+            .background(
+                LinearGradient(gradient: Gradient(colors: gradientColors), startPoint: .leading, endPoint: .trailing)
+            )
+            .cornerRadius(20)
+            .shadow(color: .gray.opacity(0.6), radius: 10, x: 0, y: 5)
+            .padding(.horizontal, 20)
     }
 }
 

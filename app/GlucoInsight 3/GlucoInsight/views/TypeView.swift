@@ -2,13 +2,13 @@
 //  TypeView.swift
 //  GlucoInsight
 //
-//  Created by YI HE on 2024/7/18.
+//  Created by Rong Han & Sichao He on 2024/7/18.
 //
 
 //  TypeView.swift
 //  GlucoInsight
 //
-//  Created by YI HE on 2024/7/18.
+//  Created by Rong Han & Sichao He on 2024/7/18.
 //
 
 import SwiftUI

@@ -1,5 +1,5 @@
 //
-//  SportsView.swift
+//  EmptySportsView.swift
 //  GlucoInsight
 //
 //  Created by Rong Han & Sichao He on 2024/7/18.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Foundation
 
-struct SportsView: View {
+struct EmptySportsView: View {
     @State private var glucoseLevel: Double?
     @State private var animation: Bool = false
     @State private var isLoading: Bool = true
@@ -87,15 +87,15 @@ struct SportsView: View {
                 animation = true
             }
             self.glucoseLevel = 3.9
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                self.isLoading = false
-                startGlucoseLevelUpdates()
-            }
+            // DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            //     self.isLoading = false
+            //     startGlucoseLevelUpdates()
+            // }
         }
     }
     
     func circleColor(for index: Int) -> Color {
-        let baseColor = (glucoseLevel ?? 0) < 3.9 ? Color.red : ((glucoseLevel ?? 0) > 7.8 ? Color.orange : Color.green)
+        let baseColor = (glucoseLevel ?? 0) < 3.9 ? Color.red : ((glucoseLevel ?? 0) > 7.8 ? Color.orange : Color.gray)
         return baseColor.opacity(1.0 - Double(index) * 0.15)
     }
     
@@ -109,7 +109,7 @@ struct SportsView: View {
         if (glucoseLevel ?? 0) < 3.9 || (glucoseLevel ?? 0) > 7.8 {
             return colorScheme == .dark ? Color.red.opacity(0.8) : Color.red
         } else {
-            return colorScheme == .dark ? Color.green.opacity(0.8) : Color.green
+            return colorScheme == .dark ? Color.gray.opacity(0.8) : Color.gray
         }
     }
     
@@ -119,7 +119,7 @@ struct SportsView: View {
         } else if level > 7.8 {
             return "血糖偏高"
         } else {
-            return "血糖正常"
+            return "未连接设备或没有初始化完成"
         }
     }
     
@@ -129,7 +129,7 @@ struct SportsView: View {
         } else if level > 7.8 {
             return "建议进行一些轻度运动，如散步，以帮助降低血糖。"
         } else {
-            return "您的血糖水平在理想范围内，继续保持良好的生活习惯。"
+            return "请检查设备连接且进行初始化。"
         }
     }
     
@@ -171,11 +171,11 @@ struct SportsView: View {
     }
 }
 
-struct SportsView_Previews: PreviewProvider {
+struct EmptySportsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            SportsView()
-            SportsView().preferredColorScheme(.dark)
+            EmptySportsView()
+            EmptySportsView().preferredColorScheme(.dark)
         }
     }
 }

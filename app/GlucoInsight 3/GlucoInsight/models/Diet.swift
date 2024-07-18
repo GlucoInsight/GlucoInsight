@@ -2,7 +2,7 @@
 //  Diet.swift
 //  GlucoInsight
 //
-//  Created by YI HE on 2024/7/18.
+//  Created by Rong Han & Sichao He on 2024/7/18.
 //
 
 import Foundation
