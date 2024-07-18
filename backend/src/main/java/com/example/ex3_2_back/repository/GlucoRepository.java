@@ -24,18 +24,34 @@ public interface GlucoRepository extends JpaRepository<Gluco, String> {
     List<Gluco> findByUser(User user);
 
     @Operation(summary = "通过用户和时间范围查找血糖信息按时间戳从后到前排序")
-    @RestResource(path = "findByUserAndTimestampBetween")
+    @RestResource(path = "findByUserAndTimestampBetweenDesc")
     @Query("SELECT g FROM Gluco g WHERE g.user = :user AND g.timestamp BETWEEN :start AND :end ORDER BY g.timestamp DESC")
+    List<Gluco> findByUserAndTimestampBetweenDesc(User user, LocalDateTime start, LocalDateTime end);
+
+    @Operation(summary = "通过用户和时间范围查找血糖信息按时间戳从前到后排序")
+    @RestResource(path = "findByUserAndTimestampBetween")
+    @Query("SELECT g FROM Gluco g WHERE g.user = :user AND g.timestamp BETWEEN :start AND :end ORDER BY g.timestamp")
     List<Gluco> findByUserAndTimestampBetween(User user, LocalDateTime start, LocalDateTime end);
 
 
     @Operation(summary = "通过用户和时间范围查找血糖信息按时间戳从后到前排序")
-    @RestResource(path = "findGlucoValueByUserAndTimestampBetween")
+    @RestResource(path = "findGlucoValueByUserAndTimestampBetweenDesc")
     @Query("SELECT new com.example.ex3_2_back.domain.PredictRequestAndReturn(g.timestamp, g.glucoValue) FROM Gluco g WHERE g.user = :user AND g.timestamp BETWEEN :yesterday AND :now ORDER BY g.timestamp DESC")
+    List<PredictRequestAndReturn> findGlucoValueByUserAndTimestampBetweenDesc(User user, LocalDateTime yesterday, LocalDateTime now);
+
+    @Operation(summary = "通过用户和时间范围查找血糖信息按时间戳从前到后排序")
+    @RestResource(path = "findGlucoValueByUserAndTimestampBetween")
+    @Query("SELECT new com.example.ex3_2_back.domain.PredictRequestAndReturn(g.timestamp, g.glucoValue) FROM Gluco g WHERE g.user = :user AND g.timestamp BETWEEN :yesterday AND :now ORDER BY g.timestamp")
     List<PredictRequestAndReturn> findGlucoValueByUserAndTimestampBetween(User user, LocalDateTime yesterday, LocalDateTime now);
 
+
     @Operation(summary = "通过用户查找血糖信息按时间戳从后到前排序")
-    @RestResource(path = "findGlucoValueByUser")
+    @RestResource(path = "findGlucoValueByUserDesc")
     @Query("SELECT new com.example.ex3_2_back.domain.PredictRequestAndReturn(g.timestamp, g.glucoValue) FROM Gluco g WHERE g.user = :user ORDER BY g.timestamp DESC")
+    List<PredictRequestAndReturn> findGlucoValueByUserDesc(User user);
+
+    @Operation(summary = "通过用户查找血糖信息按时间戳从前到后排序")
+    @RestResource(path = "findGlucoValueByUser")
+    @Query("SELECT new com.example.ex3_2_back.domain.PredictRequestAndReturn(g.timestamp, g.glucoValue) FROM Gluco g WHERE g.user = :user ORDER BY g.timestamp")
     List<PredictRequestAndReturn> findGlucoValueByUser(User user);
 }

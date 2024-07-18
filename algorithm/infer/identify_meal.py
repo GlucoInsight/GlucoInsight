@@ -4,12 +4,15 @@ import joblib
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
+import os
+
+PATH = os.path.dirname(os.path.abspath(__file__))
 
 # 导入模型和标准化器
 def load_models():
-    scaler = joblib.load('scaler.pkl')
-    lr_model = joblib.load('lr_model.pkl')
-    rf_model = joblib.load('rf_model.pkl')
+    scaler = joblib.load(os.path.join(PATH, 'scaler.pkl'))
+    lr_model = joblib.load(os.path.join(PATH, 'lr_model.pkl'))
+    rf_model = joblib.load(os.path.join(PATH, 'rf_model.pkl'))
     return scaler, lr_model, rf_model
 
 # 数据清理函数
@@ -95,11 +98,11 @@ def meal_pattern_multiple_identify(cgm_readings, timestamps, model='rf'):
     return []
 
 # 示例调用
-if __name__ == "__main__":
-    # 假设这是8小时的CGM时间序列数据
-    cgm_readings = np.random.rand(96) * 100  # 示例数据
-    timestamps = pd.date_range(start='2024-07-16 08:00:00', periods=96, freq='5T').tolist()
-    
-    # 调用识别函数
-    meal_times = identify_meal_pattern_multiple(cgm_readings, timestamps, model='rf')
-    print(meal_times)
+# if __name__ == "__main__":
+#     # 假设这是8小时的CGM时间序列数据
+#     cgm_readings = np.random.rand(96) * 100  # 示例数据
+#     timestamps = pd.date_range(start='2024-07-16 08:00:00', periods=96, freq='5T').tolist()
+#     print(type(timestamps[0]))
+#     # 调用识别函数
+#     meal_times = identify_meal_pattern_multiple(cgm_readings, timestamps, model='rf')
+#     print(meal_times)
