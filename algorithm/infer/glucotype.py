@@ -29,13 +29,13 @@ def glucotype_predict(age, bmi, cgm_time_series):
     
     # 组合预测结果
     if sensitivity_pred == 1 and beta_pred == 1:
-        homa_type_pred = 0  # Low_Low
+        homa_type_pred = 1  # Low_Low
     elif sensitivity_pred == 1 and beta_pred == 0:
-        homa_type_pred = 1  # Low_High
+        homa_type_pred = 2  # Low_High
     elif sensitivity_pred == 0 and beta_pred == 1:
-        homa_type_pred = 2  # High_Low
+        homa_type_pred = 3  # High_Low
     else:
-        homa_type_pred = 3  # High_High
+        homa_type_pred = 4  # High_High
     
     return homa_type_pred
 
