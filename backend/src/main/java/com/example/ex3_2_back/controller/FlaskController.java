@@ -22,4 +22,9 @@ public class FlaskController {
     public ResponseEntity<String> callFlask(@RequestBody String requestData) throws IOException {
         return flaskService.callFlaskEndpoint(requestData, "/test");
     }
+
+    @PostMapping("/gpt_call_test")
+    public ResponseEntity<String> callFlaskGpt(@RequestBody String requestData) throws IOException {
+        return flaskService.callFlaskEndpoint(requestData, "/chatgpt");
+    }
 }
